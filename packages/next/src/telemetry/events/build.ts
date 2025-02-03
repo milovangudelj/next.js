@@ -1,5 +1,6 @@
-import type { TelemetryPlugin } from '../../build/webpack/plugins/telemetry-plugin'
-import type { SWC_TARGET_TRIPLE } from '../../build/webpack/plugins/telemetry-plugin'
+import type { TelemetryPlugin } from '../../build/webpack/plugins/telemetry-plugin/telemetry-plugin'
+import type { SWC_TARGET_TRIPLE } from '../../build/webpack/plugins/telemetry-plugin/telemetry-plugin'
+import type { UseCacheTrackerKey } from '../../build/webpack/plugins/telemetry-plugin/use-cache-tracker-utils'
 
 const REGEXP_DIRECTORY_DUNDER =
   /[\\/]__[^\\/]+(?<![\\/]__(?:tests|mocks))__[\\/]/i
@@ -153,11 +154,10 @@ export type EventBuildFeatureUsage = {
     | 'next/font/google'
     | 'next/font/local'
     | 'experimental/nextScriptWorkers'
+    | 'experimental/dynamicIO'
     | 'experimental/optimizeCss'
     | 'experimental/ppr'
-    | 'optimizeFonts'
     | 'swcLoader'
-    | 'swcMinify'
     | 'swcRelay'
     | 'swcStyledComponents'
     | 'swcReactRemoveProperties'
@@ -173,6 +173,8 @@ export type EventBuildFeatureUsage = {
     | 'skipMiddlewareUrlNormalize'
     | 'skipTrailingSlashRedirect'
     | 'modularizeImports'
+    | 'esmExternals'
+    | UseCacheTrackerKey
   invocationCount: number
 }
 export function eventBuildFeatureUsage(
